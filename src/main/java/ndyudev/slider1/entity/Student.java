@@ -1,4 +1,4 @@
-package ndyudev.lab1.entity;
+package ndyudev.slider1.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,16 +15,16 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 
 @Entity
-@Table(name="students")
+@Table(name = "students")
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
-	@Column(name="name",columnDefinition = "nvarchar(50)")
+
+	@Column(name = "name", columnDefinition = "nvarchar(50)")
 	private String name;
-	
-	@Column(name="salary")
+
+	@Column(name = "salary")
 	private Double salary;
 
 	public Student(String name, Double salary) {
