@@ -1,7 +1,7 @@
-package ndyudev.lab1.dao;
+package ndyudev.slider1.dao;
 
-import ndyudev.lab1.entity.Student;
 import jakarta.persistence.EntityManager;
+import ndyudev.slider1.entity.Student;
 import ndyudev.utils.XJpa;
 
 public class StudentDaoImpl implements StudentDao {
