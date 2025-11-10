@@ -1,4 +1,4 @@
-package ndyudev.lab1.entity;
+package ndyudev.lab2.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Entity(name = "Lab1User")
+@Entity(name = "Lab2User")
 @Table(name = "Users")
 public class User {
 	@Id

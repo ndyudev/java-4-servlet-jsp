@@ -1,14 +1,13 @@
-package ndyudev.lab1.dao.impl;
+package ndyudev.lab2.dao.impl;
 
 import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
-import ndyudev.lab1.dao.UserDAO;
-import ndyudev.lab1.entity.User;
+import ndyudev.lab2.dao.UserDAO;
+import ndyudev.lab2.entity.User;
 import ndyudev.utils.XJpa;
 
 public class UserDAOImpl implements UserDAO {
-
 	@Override
 	public void create(User user) {
 		EntityManager em = XJpa.getEntityManager();
@@ -28,7 +27,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<User> findAll() {
 		EntityManager em = XJpa.getEntityManager();
 		try {
-			TypedQuery<User> query = em.createQuery("SELECT u FROM User u", User.class);
+			TypedQuery<User> query = em.createQuery("SELECT u FROM Lab2User u", User.class); // Đã fix
 			return query.getResultList();
 		} finally {
 			em.close();
@@ -81,7 +80,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> findAllFPTEdu() {
 		EntityManager em = XJpa.getEntityManager();
-		String queryFPT = "SELECT u FROM User u WHERE u.email LIKE :emailFPT AND u.admin = :admin";
+		String queryFPT = "SELECT u FROM Lab2User u WHERE u.email LIKE :emailFPT AND u.admin = :admin"; // Fix: Lab2User
 		try {
 			TypedQuery<User> queryUserFPT = em.createQuery(queryFPT, User.class);
 			queryUserFPT.setParameter("emailFPT", "%@fpt.edu.vn");
@@ -95,23 +94,34 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public List<User> findPageUser(int pageNumber, int pageSize) {
 		EntityManager em = XJpa.getEntityManager();
-		String jpql = "SELECT u FROM User u";
+		String jpql = "SELECT u FROM Lab2User u";
 		try {
 			TypedQuery<User> query = em.createQuery(jpql, User.class);
-
-			if (pageNumber < 1) {
+			if (pageNumber <= 0) {
 				pageNumber = 1;
 			}
+			
 			if (pageSize <= 0) {
-				pageSize = 5;
+				pageSize  = 5;
 			}
-
 			int startPosition = (pageNumber - 1) * pageSize;
 
 			query.setFirstResult(startPosition);
 			query.setMaxResults(pageSize);
 
 			return query.getResultList();
+		} finally {
+			em.close();
+		}
+	}
+
+	@Override
+	public int countAllRecord() {
+		EntityManager em = XJpa.getEntityManager();
+		String jpql = "SELECT COUNT(u) FROM Lab2User u";
+		try {
+			Long longCount = em.createQuery(jpql, Long.class).getSingleResult();
+			return longCount.intValue();
 		} finally {
 			em.close();
 		}

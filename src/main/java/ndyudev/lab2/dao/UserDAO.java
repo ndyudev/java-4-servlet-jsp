@@ -1,7 +1,7 @@
-package ndyudev.lab1.dao;
+package ndyudev.lab2.dao;
 
 import java.util.List;
-import ndyudev.lab1.entity.User;
+import ndyudev.lab2.entity.User;
 
 public interface UserDAO {
 	public void create(User user);
@@ -17,4 +17,6 @@ public interface UserDAO {
 	List<User> findAllFPTEdu();
 
 	List<User> findPageUser(int pageNumber, int pageSize);
+
+	public int countAllRecord();
 }

@@ -21,7 +21,7 @@
                 <th>Email</th>
                 <th>Admin</th>
             </tr>
-            <c:forEach var="u" items="${listUsers}" varStatus="count">
+            <c:forEach var="u" items="${listUser}" varStatus="count">
                 <tr>
                     <td>${count.count}</td>
                     <td>${u.id}</td>

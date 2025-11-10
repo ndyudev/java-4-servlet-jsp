@@ -32,22 +32,22 @@ public class Lab1User {
 //		User userFind = dao.findById("U016");
 //		System.out.println(userFind);
 
-		try {
-			dao.deleteById("U016");
-			System.out.println("Xoa thanh cong");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Xoa khong thanh cong");
-		}
-	    int pageNumber = 3;
-	    int pageSize = 5;
-		
-	    List<User> pageUsers = dao.findPageUser(pageNumber, pageSize);
+//		try {
+//			dao.deleteById("U016");
+//			System.out.println("Xoa thanh cong");
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			System.out.println("Xoa khong thanh cong");
+//		}
+		int pageNumber = 0;
+		int pageSize = 0;
 
-	    System.out.println("Trang:" + pageNumber);
-	    for (User u : pageUsers) {
-	        System.out.println(u);
-	    }
+		List<User> pageUsers = dao.findPageUser(pageNumber, pageSize);
+
+		System.out.println("Trang:" + pageNumber);
+		for (User u : pageUsers) {
+			System.out.println(u);
+		}
 
 	}
 }
