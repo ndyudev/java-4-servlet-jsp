@@ -2,16 +2,14 @@ package ndyudev.lab3.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Entity(name = "Lab3Favorite")
 @Table(name = "Favorite")
 public class Favorite {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Id")
@@ -25,6 +23,7 @@ public class Favorite {
     @JoinColumn(name = "VideoId")
     private Video video;
 
+    @Temporal(TemporalType.DATE)
     @Column(name = "LikeDate")
-    private LocalDate likeDate;
+    private Date likeDate;
 }

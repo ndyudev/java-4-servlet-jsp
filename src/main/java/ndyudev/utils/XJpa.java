@@ -8,7 +8,7 @@ public class XJpa {
 
 	private static EntityManagerFactory factory;
 	static {
-		factory = Persistence.createEntityManagerFactory("Slider_1_Student");
+		factory = Persistence.createEntityManagerFactory("java_4_servlet_jsp");
 	}
 
 	public static EntityManager getEntityManager() {
