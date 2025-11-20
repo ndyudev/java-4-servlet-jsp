@@ -22,7 +22,7 @@ public class VideoDAOImpl implements VideoDAO {
 
     @Override
     public List<Video> findAll() {
-        String jpql = "SELECT v FROM Lab3Video v";
+        String jpql = "SELECT v FROM Lab4Video v";
         EntityManager em = XJpa.getEntityManager();
         List<Video> list = null;
         try {
@@ -139,13 +139,39 @@ public class VideoDAOImpl implements VideoDAO {
         }
     }
     
-    public List<Object[]> getVideoLikeStatsNative() {
+    public List<Object[]> findVideoByKeyword(String keyword) {
         EntityManager em = XJpa.getEntityManager();
+        String jpql = "SELECT v.title, COUNT(f), v.active " 
+                    + " FROM Lab4Video v "
+                    + " LEFT JOIN v.favorites f "
+                    + " WHERE v.title LIKE :keyword " 
+                    + " GROUP BY v.title, v.active " 
+                    + " ORDER BY COUNT(f) DESC";
+
         try {
-            Query query = em.createNamedQuery("Video.likeStats"); 
+        	TypedQuery<Object[]> query = em.createQuery(jpql, Object[].class);
+            
+            query.setParameter("keyword", "%" + keyword + "%"); 
             
             List<Object[]> listStats = query.getResultList();
             return listStats;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        } finally {
+            em.close();
+        }
+    }
+    
+    public List<Video> findFavoriteVideosByUserId(String userId) {
+        EntityManager em = XJpa.getEntityManager();
+
+        String jpql = "SELECT f.video FROM Lab4Favorite f WHERE f.user.id = :userId";
+
+        try {
+            TypedQuery<Video> query = em.createQuery(jpql, Video.class);
+            query.setParameter("userId", userId);
+            return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
             return null;

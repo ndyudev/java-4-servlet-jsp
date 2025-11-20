@@ -10,7 +10,7 @@ CREATE TABLE students (
 );
 
 select * from students
-select * from users
+select * from Favorite
 
 CREATE TABLE Users (
     Id NVARCHAR(20) NOT NULL,
