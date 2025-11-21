@@ -105,4 +105,30 @@ public class FavoriteDAOImpl implements FavoriteDAO {
 		}
 		return list;
 	}
+
+	@Override
+	public void deleteByUserAndVideo(String userId, String videoId) {
+		EntityManager em = XJpa.getEntityManager();
+		try {
+			em.getTransaction().begin();
+
+			String jpql = "SELECT f FROM Lab4Favorite f WHERE f.user.id = :uid AND f.video.id = :vid";
+			TypedQuery<Favorite> query = em.createQuery(jpql, Favorite.class);
+			query.setParameter("uid", userId);
+			query.setParameter("vid", videoId);
+
+			List<Favorite> list = query.getResultList();
+			if (!list.isEmpty()) {
+				em.remove(list.get(0));
+			}
+
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			em.getTransaction().rollback();
+			e.printStackTrace();
+		} finally {
+			em.close();
+		}
+	}
+
 }

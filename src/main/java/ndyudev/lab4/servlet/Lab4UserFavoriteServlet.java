@@ -17,7 +17,10 @@ import java.util.List;
 /**
  * Servlet implementation class Lab4UserFavoriteServlet
  */
-@WebServlet("/lab4/report/userfavorites")
+@WebServlet({
+    "/lab4/report/userfavorites",
+    "/lab4/report/userfavorites/delete"
+})
 public class Lab4UserFavoriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -29,22 +32,35 @@ public class Lab4UserFavoriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		UserDAOImpl userDAO = new UserDAOImpl();
-		VideoDAOImpl videoDAO = new VideoDAOImpl();
-		FavoriteDAOImpl favoriteDAO = new FavoriteDAOImpl();
-		
-		List<User> userList = userDAO.findAll();
-		request.setAttribute("userList", userList);
+	    VideoDAOImpl videoDAO = new VideoDAOImpl();
+	    FavoriteDAOImpl favoriteDAO = new FavoriteDAOImpl();
 
-		String select = request.getParameter("userId");
-		if (select == null) {
-			select = userList.get(0).getId();
-		}
-		request.setAttribute("selectedUserId", select);
+	    String uri = request.getRequestURI();
 
-		List<Video> favoriteVideos = videoDAO.findFavoriteVideosByUserId(select);
-		request.setAttribute("favoriteVideos", favoriteVideos);
+	    if (uri.contains("delete")) {
+	        String userId = request.getParameter("userId");
+	        String videoId = request.getParameter("videoId");
 
-		request.getRequestDispatcher("/views/lab4/userFavorite.jsp").forward(request, response);
+	        favoriteDAO.deleteByUserAndVideo(userId, videoId);
+
+	        response.sendRedirect(request.getContextPath()
+	                + "/lab4/report/userfavorites?userId=" + userId);
+	        return;
+	    }
+
+	    List<User> userList = userDAO.findAll();
+	    request.setAttribute("userList", userList);
+
+	    String select = request.getParameter("userId");
+	    if (select == null) {
+	        select = userList.get(0).getId();
+	    }
+	    request.setAttribute("selectedUserId", select);
+
+	    List<Video> favoriteVideos = videoDAO.findFavoriteVideosByUserId(select);
+	    request.setAttribute("favoriteVideos", favoriteVideos);
+
+	    request.getRequestDispatcher("/views/lab4/userFavorite.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

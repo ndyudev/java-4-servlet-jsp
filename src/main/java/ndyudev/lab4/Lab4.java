@@ -15,8 +15,8 @@ public class Lab4 {
 		VideoDAOImpl videoDAO = new VideoDAOImpl();
 		ShareDAOImpl shareDAO = new ShareDAOImpl();
 		
-//		User user = userDAO.findUserByIdOrEmail("U001");
-//		System.out.println(user);
+		User user = userDAO.findUserByIdOrEmail("U001");
+		System.out.println(user);
 //		List<Video> listVideo = videoDAO.findVideoByKeyWord("Học");
 //		for (Video video : listVideo) {
 //			System.out.println(video);
