@@ -55,11 +55,15 @@
 									style="height: 180px; object-fit: cover;">
 								<div class="card-body">
 									<h5 class="card-title text-primary">${video.title}</h5>
-									<p class="card-text text-muted small">${video.description}
-									</p>
+									<p class="card-text text-muted small">${video.description}</p>
+
+									<a
+										href="${pageContext.request.contextPath}/lab4/report/userfavorites/delete?userId=${selectedUserId}&videoId=${video.id}"
+										class="btn btn-danger w-100">Unfrv</a>
 								</div>
 							</div>
 						</div>
+
 					</c:forEach>
 				</c:otherwise>
 			</c:choose>

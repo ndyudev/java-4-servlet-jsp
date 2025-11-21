@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface FavoriteDAO extends BaseDAO<Favorite, Long> {
     List<Favorite> findByUserId(String userId);
+    void deleteByUserAndVideo(String userId, String videoId);
 }
