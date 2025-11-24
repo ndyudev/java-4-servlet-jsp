@@ -1,7 +1,7 @@
 ﻿CREATE DATABASE java_4_servlet_jsp
 drop database java_4_servlet_jsp
 use java_4_servlet_jsp
-use java3_servlet_jsp
+-- use java3_servlet_jsp
 
 CREATE TABLE students (
     id INT IDENTITY(1,1) PRIMARY KEY,
@@ -9,8 +9,12 @@ CREATE TABLE students (
     salary FLOAT CHECK (salary >= 0)
 );
 
-select * from students
-select * from Favorite
+select * from students;
+SELECT u.id, u.password, u.Fullname
+FROM users u
+WHERE u.id LIKE 'u00%';
+
+select * from Users
 
 CREATE TABLE Users (
     Id NVARCHAR(20) NOT NULL,
