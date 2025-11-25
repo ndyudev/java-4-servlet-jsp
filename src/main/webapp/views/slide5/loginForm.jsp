@@ -8,6 +8,9 @@
 <title>Login form</title>
 </head>
 <body>
+	<p>${message }</p>
+	<p>${sessionScope.session }</p>
+	<p>Application: ${applicationScope.message}</p>
 	<c:url value="/slide5/login" var="login"/>
 	<form action="login" method="post">
 		Username: <input name="username" value="${user.username}"> <br>

@@ -27,7 +27,7 @@ public class Slide5Servlet extends HttpServlet {
 			throws ServletException, IOException {
 		String uri = request.getRequestURI();
 		User form = new User();
-		String message = "";
+		String message = "Thành công";
 
 		if (uri.endsWith("/tutorial")) {
 			request.setAttribute("message", "Request Scope");
@@ -43,6 +43,7 @@ public class Slide5Servlet extends HttpServlet {
 
 			
 			request.setAttribute("user", form);
+			request.setAttribute("message", message);
 		} else {
 
 		}
