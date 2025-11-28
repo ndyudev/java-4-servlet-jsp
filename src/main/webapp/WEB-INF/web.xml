@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://jakarta.ee/xml/ns/jakartaee" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd" version="6.0">
+<filter>
+        <filter-name>FilterSo1</filter-name>
+        <filter-class>ndyudev.lab5.filter.Lab5Lesson4Filter1</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>FilterSo2</filter-name>
+        <filter-class>ndyudev.lab5.filter.Lab5Lesson4Filter2</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>FilterSo1</filter-name>
+        <url-pattern>/lab5/lesson1/login</url-pattern> </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>FilterSo2</filter-name>
+        <url-pattern>/lab5/lesson1/login</url-pattern>
+    </filter-mapping>
+</web-app>

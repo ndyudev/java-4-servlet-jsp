@@ -11,14 +11,18 @@
 </head>
 <body>
     <c:if test="${not empty sessionScope.user}">
-        <div class="alert alert-success">Xin chào: ${sessionScope.user.fullName}</div>
-    </c:if>	
+        <div class="alert alert-success">${sessionScope.user.fullName}</div>
+    </c:if>
+    
+    <div class="alert alert-warning text-center">
+        Tổng lượt truy cập: <strong>${applicationScope.visitors}</strong>
+    </div>
 
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
     
         <c:url value="/lab5/lesson1/login" var="loginLink"/>
         
-        <form action="${loginLink}" method="post" class="border p-4 rounded shadow bg-white" style="width: 100%; max-width: 400px;">
+        <form action="${loginLink}" method="post" class="border p-4" style="width: 100%; max-width: 400px;">
             
             <h2 class="text-info text-center mb-4">Login</h2>
             
@@ -27,6 +31,21 @@
                     ${message}
                 </div>
             </c:if>
+            
+            <c:if test="${not empty hello}">
+		        <div class="alert alert-info text-center">
+		            <strong>${hello}</strong>
+		        </div>
+		    </c:if>
+            
+            <c:if test="${not empty sessionScope.user}">
+			    <div class="text-center my-2">
+			        <a class="btn btn-danger" href="${pageContext.request.contextPath}/lab5/logout">
+			            <i class="fa-solid fa-right-from-bracket"></i> Logout
+			        </a>
+			    </div>
+			</c:if>
+            
 
             <div class="mb-3">
                 <label class="form-label" for="username">Username:</label>

@@ -6,7 +6,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import ndyudev.lab5.entity.Log;
 import ndyudev.lab5.entity.User;
+import ndyudev.lab5.service.LogService;
 import ndyudev.lab5.service.UserService;
 
 import java.io.IOException;
@@ -15,6 +17,7 @@ import java.io.IOException;
 public class Lab5Lesson1Login extends HttpServlet {
     private static final long serialVersionUID = 1L;
     UserService userService = new UserService();
+    LogService logService = new LogService();
 
     public Lab5Lesson1Login() {
         super();
@@ -40,7 +43,11 @@ public class Lab5Lesson1Login extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             
-            request.setAttribute("username", id); 
+            request.setAttribute("username", id);
+            Log log = new Log();
+            log.setUrl(request.getRequestURI());
+            log.setUsername(user.getId());
+            logService.create(log);
         }
         
         request.getRequestDispatcher("/views/lab5/Lesson1Login.jsp").forward(request, response);
