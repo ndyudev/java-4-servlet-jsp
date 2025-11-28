@@ -1,4 +1,4 @@
-﻿﻿CREATE DATABASE java_4_servlet_jsp
+﻿CREATE DATABASE java_4_servlet_jsp
 drop database java_4_servlet_jsp
 use java_4_servlet_jsp
 -- use java3_servlet_jsp
@@ -138,3 +138,12 @@ SELECT * FROM Users;
 SELECT * FROM Video;
 SELECT * FROM Favorite;
 SELECT * FROM Share;
+
+CREATE TABLE Logs (
+    Id BIGINT PRIMARY KEY IDENTITY(1,1),
+    Url NVARCHAR(255) NOT NULL,
+    Time DATETIME DEFAULT GETDATE(),
+    Username NVARCHAR(20) NULL,
+
+    FOREIGN KEY (Username) REFERENCES [users](Id)
+);
