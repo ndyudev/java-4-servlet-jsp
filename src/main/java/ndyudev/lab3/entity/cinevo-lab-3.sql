@@ -1,4 +1,4 @@
-﻿﻿CREATE DATABASE java_4_servlet_jsp
+﻿CREATE DATABASE java_4_servlet_jsp
 drop database java_4_servlet_jsp
 use java_4_servlet_jsp
 -- use java3_servlet_jsp
