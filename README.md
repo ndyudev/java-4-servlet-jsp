@@ -34,7 +34,7 @@
 > - **MVC**: [**NẾU SỬ DỤNG MVC**] Tách bạch Model – View – Controller, code dễ đọc, dễ maintain
 > - **[DATABASE] + Hibernate/JPA**: [**NẾU SỬ DỤNG DATABASE**] Quản lý & thao tác dữ liệu
 >
-> Phù hợp cho sinh viên đang học **Java 4 (MOB1023)** hoặc muốn ôn lại nền tảng **Servlet & JSP**.
+> Phù hợp cho sinh viên đang học **Java 4 ( SOF3012 )** hoặc muốn ôn lại nền tảng **Servlet & JSP**.
 
 ---
 
