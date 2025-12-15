@@ -6,7 +6,7 @@
 
 <!-- Thêm các badge phù hợp khác (Database, Build, v.v.) -->
 
-> Repository chứa **Labs + Assignment** môn **Java 4 – Lập trình Web với Servlet & JSP**. [**HÃY THAY ĐỔI ĐOẠN NÀY!**] Mô tả ngắn gọn về dự án. Ví dụ: "Dự án mẫu cho môn học, minh họa các khái niệm cơ bản về Servlet và JSP."
+> Repository chứa **Labs + Assignment** môn **Java 4 – Lập trình Web với Servlet & JSP**. 
 
 ---
 
